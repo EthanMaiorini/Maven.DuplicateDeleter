@@ -18,7 +18,7 @@ public final class IntegerDuplicateDeleter extends DuplicateDeleter<Integer> {
 
     @Override
     public  Integer[] removeDuplicates(int maxNumberOfDuplications) {
-        //Integer[] newArray = new Integer[intArray.length];
+        Integer[] intArray = Arrays.copyOf(super.array,super.array.length);
         for(int x =0;x<intArray.length;x++){
             Integer occ = getNumberOfOccurrences(intArray,intArray[x]);
             if(occ >= maxNumberOfDuplications){
@@ -26,22 +26,23 @@ public final class IntegerDuplicateDeleter extends DuplicateDeleter<Integer> {
                 x--;
             }
         }
-        final Integer[] intArr2 = Arrays.copyOf(intArray,intArray.length);
-        return intArr2;
+        Integer[] intArray2 = Arrays.copyOf(intArray,intArray.length);
+        return intArray2;
     }
 
     @Override
     public final Integer[] removeDuplicatesExactly(int exactNumberOfDuplications) {
+        Integer[] intArray = Arrays.copyOf(super.array,super.array.length);
         for(int x =0;x<intArray.length;x++){
             Integer occ = getNumberOfOccurrences(intArray,intArray[x]);
             if(occ == exactNumberOfDuplications){
-                super.array = removeValue(intArray,intArray[x]);
+                intArray = removeValue(intArray,intArray[x]);
                 x--;
             }
 
         }
         //super.array = Arrays.copyOf(intArray,intArray.length);
-        final Integer[] intArr2 =  Arrays.copyOf(intArray,intArray.length);
+        Integer[] intArr2 =  Arrays.copyOf(intArray,intArray.length);
         return intArr2;
     }
 
