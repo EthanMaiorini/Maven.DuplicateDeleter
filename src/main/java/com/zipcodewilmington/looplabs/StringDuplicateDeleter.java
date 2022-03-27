@@ -7,37 +7,39 @@ import java.util.Arrays;
  * @ATTENTION_TO_STUDENTS You are forbidden from modifying the signature of this class.
  */
 public final class StringDuplicateDeleter extends DuplicateDeleter<String> {
-    public String[] intArray;
-    public StringDuplicateDeleter(String[] intArray) {
-        super(intArray);
-        this.intArray = Arrays.copyOf(intArray,intArray.length);
+    public String[] stringArray;
+    public StringDuplicateDeleter(String[] stringArray) {
+        super(stringArray);
+        this.stringArray = Arrays.copyOf(stringArray,stringArray.length);
     }
 
     @Override
     public String[] removeDuplicates(int maxNumberOfDuplications) {
-        for(int x =0;x<intArray.length;x++){
-            Integer occ = getNumberOfOccurrences(intArray,intArray[x]);
+        String[] stringArray = Arrays.copyOf(super.array,super.array.length);
+        for(int x =0;x<stringArray.length;x++){
+            Integer occ = getNumberOfOccurrences(stringArray,stringArray[x]);
             if(occ >= maxNumberOfDuplications){
-                intArray = removeValue(intArray,intArray[x]);
+                stringArray = removeValue(stringArray,stringArray[x]);
                 x--;
             }
         }
-        super.array = Arrays.copyOf(intArray,intArray.length);
-        return super.array;
+        String[] stringArray2 = Arrays.copyOf(stringArray,stringArray.length);
+        return stringArray2;
     }
 
     @Override
     public String[] removeDuplicatesExactly(int exactNumberOfDuplications) {
-        for(int x =0;x<intArray.length;x++){
-            Integer occ = getNumberOfOccurrences(intArray,intArray[x]);
+        String[] stringArray = Arrays.copyOf(super.array,super.array.length);
+        for(int x =0;x<stringArray.length;x++){
+            Integer occ = getNumberOfOccurrences(stringArray,stringArray[x]);
             if(occ == exactNumberOfDuplications){
-                super.array = removeValue(intArray,intArray[x]);
+                stringArray = removeValue(stringArray,stringArray[x]);
                 x--;
             }
 
         }
-        super.array = Arrays.copyOf(intArray,intArray.length);
-        return super.array;
+        String[] stringArray2 =  Arrays.copyOf(stringArray,stringArray.length);
+        return stringArray2;
     }
 
     public static Integer getNumberOfOccurrences(Object[] objectArray, Object objectToCount) {
